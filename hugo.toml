@@ -3,7 +3,10 @@ languageCode = 'en-us'
 title = 'Hallucinations'
 theme = 'blog'
 
-# Multilingual setup: English (default) and Farsi (fa)
+# Detect Japanese text for accurate summaries and reading-time estimates.
+hasCJKLanguage = true
+
+# Separate content roots keep each language out of the other language builds.
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
 
@@ -12,8 +15,8 @@ defaultContentLanguageInSubdir = true
 		languageName = "English"
 		languageCode = "en"
 		weight = 1
-		# keep existing content in content/ for the default language
-		contentDir = "content"
+		# English originals
+		contentDir = "content/en"
 
 	[languages.fa]
 		languageName = "فارسی"
