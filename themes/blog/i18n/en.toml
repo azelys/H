@@ -1,0 +1,86 @@
+[skip]
+other = "Skip to content"
+
+[journal]
+other = "Personal weblog"
+
+[headline]
+other = "A place for<br>unfinished thought."
+
+[intro]
+other = "Notes, questions, and ideas — before they become a paper, a project, or a conclusion."
+
+[recent]
+other = "Latest entries"
+
+[allPosts]
+other = "All entries"
+
+[archive]
+other = "The archive"
+
+[archiveIntro]
+other = "An ongoing collection of notes, questions, and things worth thinking about."
+
+[read]
+other = "Read entry"
+
+[minute]
+other = "min read"
+
+[back]
+other = "Back to all entries"
+
+[home]
+other = "Home"
+
+[posts]
+other = "Entries"
+
+[tags]
+other = "Topics"
+
+[theme]
+other = "Toggle dark mode"
+
+[appearance]
+other = "Appearance"
+
+[website]
+other = "mahdiar.org"
+
+[empty]
+other = "Nothing here just yet."
+
+[emptyText]
+other = "The next idea is still taking shape. Explore the archive in the meantime."
+
+[topicsIntro]
+other = "Follow a thread through the notebook."
+
+[notFound]
+other = "This page wandered off."
+
+[notFoundText]
+other = "The address may have changed, or this thought has not made it onto the page yet."
+
+[goHome]
+other = "Return to the notebook"
+
+[next]
+other = "Next entry"
+
+[previous]
+other = "Previous entry"
+
+[languages]
+other = "Choose a language"
+
+[footerNote]
+other = "Not a geek, not a nerd — simply an entertainer."
+
+[siteTitle]
+other = "Hallucinations"
+
+[categories]
+other = "Categories"
