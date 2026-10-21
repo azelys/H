@@ -2,7 +2,7 @@
 <header class="page-heading">
   <p class="eyebrow">Research · Mahdiar Sadeghi</p>
   <h1>Publications</h1>
-  <p>Journal articles, conference papers, abstracts, posters, preprints, and dissertation. Related versions are linked together.</p>
+  <p>Research in quantitative pharmacology, mathematical modeling, control theory, and electromagnetic sensing.</p>
   <p><a href="https://scholar.google.com/citations?user=WCOYDvkAAAAJ&amp;hl=en">Google Scholar</a> · <a href="https://orcid.org/0000-0002-8696-0912">ORCID</a> · <a href="https://mahdiar.org/">Personal website</a></p>
 </header>
 <nav class="publication-index" aria-label="Publication types">
@@ -13,19 +13,24 @@
   <h2 id="{{ .id }}">{{ .title }}</h2>
   <ol class="publication-records">
   {{ range .records }}
+    {{ $recordTitle := .title }}
     <li>
       <span class="publication-year">{{ .year }}</span>
       <div>
         <h3>{{ .title }}</h3>
         <p class="publication-authors">{{ .authors_text }}</p>
         <p class="publication-venue">{{ .venue }}</p>
-        <p class="publication-links">{{ range $i, $link := .links }}{{ if $i }} · {{ end }}<a href="{{ $link.url }}">{{ $link.label }}</a>{{ end }}</p>
-        {{ with .note }}<p class="publication-note">{{ . }}</p>{{ end }}
+        <p class="publication-links">{{ with .pdf }}{{ $url := .url }}{{ with .path }}{{ $url = . | relURL }}{{ end }}<a href="{{ $url }}">{{ .label }}</a> · {{ end }}{{ range $i, $link := .links }}{{ if $i }} · {{ end }}<a href="{{ $link.url }}">{{ $link.label }}</a>{{ end }}{{ with .license }} · <a href="{{ .url }}" rel="license">{{ .label }}</a>{{ end }}</p>
+        {{ with .abstract }}
+        <details class="publication-abstract">
+          <summary>Abstract<span class="sr-only"> — {{ $recordTitle }}</span></summary>
+          <div>{{ range . }}<p>{{ . }}</p>{{ end }}</div>
+        </details>
+        {{ end }}
       </div>
     </li>
   {{ end }}
   </ol>
 </section>
 {{ end }}
-<p class="publication-note">Last reviewed {{ .Site.Data.publications.updated }}. This record is being reconciled against publisher, repository, and conference records; it is not yet exhaustive. Journal versions and their preprints are grouped together. Conference abstracts and posters are labeled separately.</p>
 {{ end }}
