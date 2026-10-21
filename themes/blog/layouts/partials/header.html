@@ -2,16 +2,16 @@
 		<div class="site-brand">
 				{{- $lang := .Site.Language.Lang -}}
 				{{- if eq $lang "fa" -}}
-					<h1><a href="{{ "/" | relLangURL }}">توهم</a></h1>
+					<h1><a href="{{ .Site.Home.RelPermalink }}">توهم</a></h1>
                 <p class="site-tagline">نه گیک، نه نرد — فقط یک سرگرم‌کننده.</p>
 				{{- else if eq $lang "fr" -}}
-					<h1><a href="{{ "/" | relLangURL }}">Hallucinations</a></h1>
+					<h1><a href="{{ .Site.Home.RelPermalink }}">Hallucinations</a></h1>
                 <p class="site-tagline">Ni geek, ni nerd — simplement un amuseur.</p>
 				{{- else if eq $lang "ja" -}}
-					<h1><a href="{{ "/" | relLangURL }}">ハルシネーションズ</a></h1>
+					<h1><a href="{{ .Site.Home.RelPermalink }}">ハルシネーションズ</a></h1>
                 <p class="site-tagline">ギークでもナードでもない — ただのエンターテイナー。</p>
 				{{- else -}}
-					<h1><a href="{{ "/" | relLangURL }}">{{ .Site.Title }}</a></h1>
+					<h1><a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a></h1>
                 <p class="site-tagline">Not a geek, not a nerd — simply an entertainer.</p>
 				{{- end -}}
 		</div>
