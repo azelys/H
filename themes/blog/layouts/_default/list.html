@@ -1,56 +1,13 @@
 {{ define "main" }}
-  {{- /* Localize common list titles for Posts/Tags/Home when translations are not provided via content files */ -}}
-  {{- $title := .Title -}}
-  {{- if eq .Site.Language.Lang "fa" -}}
-    {{- if eq .Section "posts" -}}
-      {{- $title = "نوشته‌ها" -}}
-    {{- else if eq .Kind "taxonomy" }}
-      {{- /* taxonomy listing (e.g. tags) */ -}}
-      {{- if eq .Title "Tags" -}}
-        {{- $title = "برچسب‌ها" -}}
-      {{- end -}}
-    {{- else if .IsHome }}
-      {{- $title = .Title -}}
-    {{- end }}
-  {{- else if eq .Site.Language.Lang "fr" -}}
-    {{- if eq .Section "posts" -}}
-      {{- $title = "Articles" -}}
-    {{- else if eq .Kind "taxonomy" }}
-      {{- if eq .Title "Tags" -}}
-        {{- $title = "Étiquettes" -}}
-      {{- end -}}
-    {{- else if .IsHome }}
-      {{- $title = .Title -}}
-    {{- end }}
-  {{- else if eq .Site.Language.Lang "ja" -}}
-    {{- if eq .Section "posts" -}}
-      {{- $title = "投稿" -}}
-    {{- else if eq .Kind "taxonomy" }}
-      {{- if eq .Title "Tags" -}}
-        {{- $title = "タグ" -}}
-      {{- end -}}
-    {{- else if .IsHome }}
-      {{- $title = .Title -}}
-    {{- end }}
-  {{- end }}
-  <h1 class="site-page-title">{{ $title }}</h1>
-  {{- /* For the posts section we intentionally avoid rendering section body content
-       (some older content injected an extra bottom note). Render content for other
-       list kinds only. */ -}}
-  {{- if not (eq .Section "posts") }}
-    {{ .Content }}
-  {{- end }}
-  {{/* Filter pages by language */}}
-  <div class="post-list">
-  {{ range where .Pages "Lang" .Site.Language.Lang }}
-    <article class="post-row">
-      <div class="post-title">
-        <a href="{{ .RelPermalink }}">{{ if .LinkTitle }}{{ .LinkTitle }}{{ else }}{{ .Title }}{{ end }}</a>
-      </div>
-  <time class="post-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ if eq .Site.Language.Lang "fa" }}{{ partial "toPersianDigits.html" (.Date.Format "2006-01-02") }}{{ else }}{{ .Date.Format "2006-01-02" }}{{ end }}</time>
-    </article>
-  {{ else }}
-    <p>No content available in this language.</p>
-  {{ end }}
-  </div>
+<header class="page-heading">
+  <p class="eyebrow">{{ i18n "journal" }}</p>
+  <h1>{{ if eq .Section "posts" }}{{ i18n "archive" }}{{ else if and (eq .Kind "taxonomy") (eq .Section "categories") }}{{ i18n "categories" }}{{ else if eq .Kind "taxonomy" }}{{ i18n "tags" }}{{ else }}{{ .Title }}{{ end }}</h1>
+  {{ if eq .Section "posts" }}<p>{{ i18n "archiveIntro" }}</p>{{ else if eq .Kind "taxonomy" }}<p>{{ i18n "topicsIntro" }}</p>{{ end }}
+</header>
+{{ if not (eq .Section "posts") }}{{ with .Content }}<div class="prose section-content">{{ . }}</div>{{ end }}{{ end }}
+{{ if eq .Kind "taxonomy" }}
+  <div class="topic-list">{{ range .Data.Terms.Alphabetical }}<a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}<span>{{ .Count }}</span></a>{{ else }}{{ partial "empty.html" . }}{{ end }}</div>
+{{ else }}
+  {{ partial "post-list.html" (dict "pages" .RegularPages.ByDate.Reverse "context" .) }}
+{{ end }}
 {{ end }}

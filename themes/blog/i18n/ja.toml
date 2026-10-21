@@ -1,0 +1,86 @@
+[skip]
+other = "本文へ移動"
+
+[journal]
+other = "個人のウェブログ"
+
+[headline]
+other = "まだ途中の<br>思考のために。"
+
+[intro]
+other = "論文やプロジェクト、結論になる前の、メモと問いとアイデア。"
+
+[recent]
+other = "最近の投稿"
+
+[allPosts]
+other = "すべての投稿"
+
+[archive]
+other = "アーカイブ"
+
+[archiveIntro]
+other = "メモや問い、考え続けたいことの記録。"
+
+[read]
+other = "続きを読む"
+
+[minute]
+other = "分で読めます"
+
+[back]
+other = "投稿一覧に戻る"
+
+[home]
+other = "ホーム"
+
+[posts]
+other = "投稿"
+
+[tags]
+other = "テーマ"
+
+[theme]
+other = "ダークモードを切り替え"
+
+[appearance]
+other = "表示"
+
+[website]
+other = "mahdiar.org"
+
+[empty]
+other = "まだ投稿がありません。"
+
+[emptyText]
+other = "次のアイデアはまだ形になっている途中です。アーカイブをご覧ください。"
+
+[topicsIntro]
+other = "ノートの中のテーマをたどる。"
+
+[notFound]
+other = "ページが見つかりません。"
+
+[notFoundText]
+other = "アドレスが変わったか、まだ書かれていないページかもしれません。"
+
+[goHome]
+other = "ノートに戻る"
+
+[next]
+other = "次の投稿"
+
+[previous]
+other = "前の投稿"
+
+[languages]
+other = "言語を選択"
+
+[footerNote]
+other = "ギークでもナードでもない — ただのエンターテイナー。"
+
+[siteTitle]
+other = "ハルシネーションズ"
+
+[categories]
+other = "カテゴリー"

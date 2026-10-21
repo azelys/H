@@ -1,6 +1,7 @@
 +++
 title = "誕生"
-date = 2023-12-31T13:27:53-08:00
+date = 2023-12-31T12:27:53-08:00
+translationKey = "birth"
 +++
 
-投稿「birth」の日本語プレースホルダー翻訳です。
+[Hugo](https://gohugo.io) と [GitHub](https://github.com) のおかげで、新しいアイデンティティが生まれつつあります。

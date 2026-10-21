@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="{{ or site.Language.LanguageCode site.Language.Lang }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
-<head>
-  {{ partial "head.html" . }}
-</head>
-<body>
-  <header>
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}" dir="{{ or .Site.Language.LanguageDirection "ltr" }}">
+<head>{{ partial "head.html" . }}</head>
+<body class="{{ if .IsHome }}is-home{{ else if .IsPage }}is-article{{ else }}is-list{{ end }}">
+  <a class="skip-link" href="#main">{{ i18n "skip" }}</a>
+  <div class="site-shell">
     {{ partial "header.html" . }}
-  </header>
-  {{- /* Global language switcher shown on every page */ -}}
-  {{ partial "lang-switch.html" . }}
-  <main>
-    {{ block "main" . }}{{ end }}
-  </main>
-  <footer>
+    <div class="language-bar">{{ partial "lang-switch.html" . }}<span class="language-note">{{ i18n "journal" }}</span></div>
+    <main id="main" tabindex="-1">{{ block "main" . }}{{ end }}</main>
     {{ partial "footer.html" . }}
-  </footer>
+  </div>
 </body>
 </html>

@@ -1,0 +1,86 @@
+[skip]
+other = "Aller au contenu"
+
+[journal]
+other = "Carnet personnel"
+
+[headline]
+other = "Une place pour<br>les idées en cours."
+
+[intro]
+other = "Notes, questions et idées — avant de devenir un article, un projet ou une conclusion."
+
+[recent]
+other = "Dernières notes"
+
+[allPosts]
+other = "Toutes les notes"
+
+[archive]
+other = "Les archives"
+
+[archiveIntro]
+other = "Une collection de notes, de questions et de sujets qui méritent réflexion."
+
+[read]
+other = "Lire la note"
+
+[minute]
+other = "min de lecture"
+
+[back]
+other = "Retour aux notes"
+
+[home]
+other = "Accueil"
+
+[posts]
+other = "Notes"
+
+[tags]
+other = "Thèmes"
+
+[theme]
+other = "Changer le mode sombre"
+
+[appearance]
+other = "Apparence"
+
+[website]
+other = "mahdiar.org"
+
+[empty]
+other = "Rien ici pour le moment."
+
+[emptyText]
+other = "La prochaine idée prend encore forme. Explorez les archives en attendant."
+
+[topicsIntro]
+other = "Suivez un fil à travers le carnet."
+
+[notFound]
+other = "Cette page s’est égarée."
+
+[notFoundText]
+other = "Son adresse a peut-être changé, ou cette idée n’a pas encore été écrite."
+
+[goHome]
+other = "Retour au carnet"
+
+[next]
+other = "Note suivante"
+
+[previous]
+other = "Note précédente"
+
+[languages]
+other = "Choisir une langue"
+
+[footerNote]
+other = "Ni geek, ni nerd — simplement un amuseur."
+
+[siteTitle]
+other = "Hallucinations"
+
+[categories]
+other = "Catégories"

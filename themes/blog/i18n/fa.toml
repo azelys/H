@@ -1,0 +1,86 @@
+[skip]
+other = "رفتن به محتوا"
+
+[journal]
+other = "وبلاگ شخصی"
+
+[headline]
+other = "جایی برای<br>اندیشه‌های ناتمام."
+
+[intro]
+other = "یادداشت‌ها، پرسش‌ها و ایده‌ها — پیش از آن‌که به مقاله، پروژه یا نتیجه‌ای تبدیل شوند."
+
+[recent]
+other = "تازه‌ترین نوشته‌ها"
+
+[allPosts]
+other = "همهٔ نوشته‌ها"
+
+[archive]
+other = "بایگانی"
+
+[archiveIntro]
+other = "مجموعه‌ای پیوسته از یادداشت‌ها، پرسش‌ها و موضوعاتی برای اندیشیدن."
+
+[read]
+other = "خواندن نوشته"
+
+[minute]
+other = "دقیقه مطالعه"
+
+[back]
+other = "بازگشت به همهٔ نوشته‌ها"
+
+[home]
+other = "خانه"
+
+[posts]
+other = "نوشته‌ها"
+
+[tags]
+other = "موضوع‌ها"
+
+[theme]
+other = "تغییر حالت تیره"
+
+[appearance]
+other = "نمایش"
+
+[website]
+other = "mahdiar.org"
+
+[empty]
+other = "هنوز چیزی اینجا نیست."
+
+[emptyText]
+other = "ایدهٔ بعدی هنوز در حال شکل‌گیری است. تا آن زمان بایگانی را ببینید."
+
+[topicsIntro]
+other = "رشته‌ای از اندیشه‌ها را در دفتر دنبال کنید."
+
+[notFound]
+other = "این صفحه پیدا نشد."
+
+[notFoundText]
+other = "شاید نشانی تغییر کرده یا این اندیشه هنوز به نوشته تبدیل نشده است."
+
+[goHome]
+other = "بازگشت به دفتر"
+
+[next]
+other = "نوشتهٔ بعدی"
+
+[previous]
+other = "نوشتهٔ قبلی"
+
+[languages]
+other = "انتخاب زبان"
+
+[footerNote]
+other = "نه گیک، نه نرد — فقط یک سرگرم‌کننده."
+
+[siteTitle]
+other = "توهم"
+
+[categories]
+other = "دسته‌ها"

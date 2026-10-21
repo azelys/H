@@ -1,21 +1,16 @@
 {{ define "main" }}
-  {{/* Language switcher removed from single page — global switcher in header is used instead */}}
-  <h1>{{ .Title }}</h1>
-
-  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-  {{ $dateHuman := .Date | time.Format ":date_long" }}
-  <time datetime="{{ $dateMachine }}">{{ if eq .Site.Language.Lang "fa" }}{{ partial "toPersianDigits.html" $dateHuman }}{{ else }}{{ $dateHuman }}{{ end }}</time>
-
-  {{ .Content }}
-  {{- /* If the current page has no translations, show a gentle suggestion to the reader */ -}}
-  {{- if not (len .Translations) }}
-    <div class="translation-note">
-      {{- if eq .Site.Language.Lang "fa" }}
-        <p>این صفحه هنوز به سایر زبان‌ها ترجمه نشده است. برای مشاهده نسخهٔ انگلیسی، <a href="{{ "/en/" | relURL }}">به خانهٔ انگلیسی</a> بروید.</p>
-      {{- else }}
-        <p>This page has no translations yet. To view the Persian site, <a href="{{ "/fa/" | relURL }}">go to the Farsi home</a>.</p>
-      {{- end }}
-    </div>
-  {{- end }}
+<article class="reading-layout">
+  <header class="article-heading">
+    {{ with .Site.GetPage "/posts" }}<a class="back-link" href="{{ .RelPermalink }}"><span aria-hidden="true">←</span> {{ i18n "back" }}</a>{{ end }}
+    <div class="post-meta">{{ partial "date.html" . }}<span aria-hidden="true">/</span><span>{{ if eq .Lang "fa" }}{{ partial "toPersianDigits.html" .ReadingTime }}{{ else }}{{ .ReadingTime }}{{ end }} {{ i18n "minute" }}</span></div>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="article-description">{{ . }}</p>{{ end }}
+  </header>
+  <div class="prose">{{ .Content }}</div>
   {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+  <nav class="article-pagination" aria-label="{{ i18n "allPosts" }}">
+    {{ with .PrevInSection }}<a href="{{ .RelPermalink }}"><span>{{ i18n "previous" }}</span><strong>{{ .Title }}</strong></a>{{ end }}
+    {{ with .NextInSection }}<a href="{{ .RelPermalink }}"><span>{{ i18n "next" }}</span><strong>{{ .Title }}</strong></a>{{ end }}
+  </nav>
+</article>
 {{ end }}

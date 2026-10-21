@@ -1,18 +1,11 @@
 {{ define "main" }}
-  {{ .Content }}
-  {{/* Filter pages by language and show only posts for the homepage */}}
-  {{ $pages := where site.RegularPages "Lang" .Site.Language.Lang }}
-  {{ $posts := where $pages "Section" "posts" }}
-  <div class="post-list">
-  {{ range $posts }}
-    <article class="post-row">
-      <div class="post-title">
-        <a href="{{ .RelPermalink }}">{{ if .LinkTitle }}{{ .LinkTitle }}{{ else }}{{ .Title }}{{ end }}</a>
-      </div>
-  <time class="post-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ if eq .Site.Language.Lang "fa" }}{{ partial "toPersianDigits.html" (.Date.Format "2006-01-02") }}{{ else }}{{ .Date.Format "2006-01-02" }}{{ end }}</time>
-    </article>
-  {{ else }}
-    <p>No posts available in this language.</p>
-  {{ end }}
-  </div>
+<section class="home-intro" aria-labelledby="intro-title">
+  <h1 id="intro-title">{{ i18n "headline" | safeHTML }}</h1>
+  <p class="intro-copy">{{ i18n "intro" }}</p>
+</section>
+<section class="entries-section" aria-labelledby="entries-title">
+  <div class="section-heading"><h2 id="entries-title">{{ i18n "recent" }}</h2>{{ with .Site.GetPage "/posts" }}<a class="text-link" href="{{ .RelPermalink }}">{{ i18n "allPosts" }} <span aria-hidden="true">↗</span></a>{{ end }}</div>
+  {{ $posts := where .Site.RegularPages "Section" "posts" }}
+  {{ partial "post-list.html" (dict "pages" (first 6 $posts.ByDate.Reverse) "context" .) }}
+</section>
 {{ end }}
