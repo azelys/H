@@ -1,45 +1,7 @@
-{{- /*
-For a given taxonomy, renders a list of terms assigned to the page.
-
-@context {page} page The current page.
-@context {string} taxonomy The taxonony.
-
-@example: {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
-*/}}
-
-{{- $page := .page }}
-{{- $taxonomy := .taxonomy }}
-
-{{- with $page.GetTerms $taxonomy }}
-  {{- /* Localize taxonomy label */ -}}
-  {{- $label := printf "%s" (humanize $taxonomy) -}}
-  {{- if eq $taxonomy "tags" }}
-    {{- if eq $page.Site.Language.Lang "fa" }}
-      {{- $label = "برچسب‌ها" -}}
-    {{- else if eq $page.Site.Language.Lang "fr" }}
-      {{- $label = "Étiquettes" -}}
-    {{- else if eq $page.Site.Language.Lang "ja" }}
-      {{- $label = "タグ" -}}
-    {{- else }}
-      {{- $label = "Tags" -}}
-    {{- end }}
-  {{- else if eq $taxonomy "categories" }}
-    {{- if eq $page.Site.Language.Lang "fa" }}
-      {{- $label = "دسته‌بندی‌ها" -}}
-    {{- else if eq $page.Site.Language.Lang "fr" }}
-      {{- $label = "Catégories" -}}
-    {{- else if eq $page.Site.Language.Lang "ja" }}
-      {{- $label = "カテゴリ" -}}
-    {{- else }}
-      {{- $label = "Categories" -}}
-    {{- end }}
-  {{- end }}
-  <div class="terms">
-    <div class="terms-label">{{ $label }}:</div>
-    <ul class="terms-list">
-      {{- range . }}
-        <li class="term-item"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
-      {{- end }}
-    </ul>
-  </div>
-{{- end }}
+{{ $taxonomy := .taxonomy }}
+{{ with .page.GetTerms $taxonomy }}
+<div class="terms">
+  <div class="terms-label">{{ if eq $taxonomy "tags" }}{{ i18n "tags" }}{{ else if eq $taxonomy "categories" }}{{ i18n "categories" }}{{ else }}{{ humanize $taxonomy }}{{ end }}:</div>
+  <ul class="terms-list">{{ range . }}<li class="term-item"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>{{ end }}</ul>
+</div>
+{{ end }}

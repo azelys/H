@@ -1,0 +1,22 @@
+<div class="post-list">
+{{ range $index, $page := .pages }}
+  <article class="post-row">
+    <span class="post-index" aria-hidden="true">{{ printf "%02d" (add $index 1) }}</span>
+    <div class="post-preview">
+      {{ if $.context.IsHome }}<h3 class="post-title">{{ else }}<h2 class="post-title">{{ end }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ if $.context.IsHome }}</h3>{{ else }}</h2>{{ end }}
+      {{ $excerpt := .Description }}
+      {{ if not $excerpt }}
+        {{ range findRE `(?s)<p>.*?</p>` .Content }}
+          {{ $text := trim (. | plainify | htmlUnescape) " \t\r\n" }}
+          {{ if and (not $excerpt) $text }}{{ $excerpt = $text }}{{ end }}
+        {{ end }}
+      {{ end }}
+      {{ with $excerpt }}<p class="post-excerpt">{{ . | truncate 145 }}</p>{{ end }}
+      <div class="post-meta">{{ partial "date.html" . }}<span aria-hidden="true">/</span><span>{{ if eq .Lang "fa" }}{{ partial "toPersianDigits.html" .ReadingTime }}{{ else }}{{ .ReadingTime }}{{ end }} {{ i18n "minute" }}</span></div>
+    </div>
+    <a class="entry-arrow" href="{{ .RelPermalink }}" aria-label="{{ i18n "read" }}: {{ .Title }}"><span aria-hidden="true">↗</span></a>
+  </article>
+{{ else }}
+  {{ partial "empty.html" .context }}
+{{ end }}
+</div>

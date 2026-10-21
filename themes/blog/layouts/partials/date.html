@@ -1,0 +1,1 @@
+<time datetime="{{ .Date.Format "2006-01-02" }}">{{ if eq .Lang "fa" }}{{ partial "toPersianDigits.html" (.Date.Format "2006/01/02") }}{{ else if eq .Lang "ja" }}{{ .Date.Format "2006年1月2日" }}{{ else }}{{ .Date | time.Format ":date_medium" }}{{ end }}</time>

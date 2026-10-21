@@ -1,51 +1,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-{{- /* Compute a localized page title for section / taxonomy pages and a localized site title */ -}}
-{{- $pageTitle := "" -}}
-{{- $siteTitle := site.Title -}}
-{{- if eq .Site.Language.Lang "fa" -}}
-	{{- $siteTitle = "توهم" -}}
-{{- else if eq .Site.Language.Lang "fr" -}}
-	{{- $siteTitle = "Hallucinations" -}}
-{{- else if eq .Site.Language.Lang "ja" -}}
-	{{- $siteTitle = "ハルシネーションズ" -}}
+{{- $siteTitle := i18n "siteTitle" -}}
+{{- $pageTitle := .Title -}}
+{{- if and (eq .Kind "section") (eq .Section "posts") -}}
+  {{- $pageTitle = i18n "archive" -}}
+{{- else if and (eq .Kind "taxonomy") (eq .Section "tags") -}}
+  {{- $pageTitle = i18n "tags" -}}
+{{- else if and (eq .Kind "taxonomy") (eq .Section "categories") -}}
+  {{- $pageTitle = i18n "categories" -}}
+{{- else if eq .Kind "404" -}}
+  {{- $pageTitle = i18n "notFound" -}}
 {{- end -}}
-{{- if .IsHome -}}
-	{{- $pageTitle = site.Title -}}
-{{- else -}}
-	{{- /* Section pages (e.g. /posts/) */ -}}
-	{{- if or (eq .Kind "section") (eq .Kind "taxonomy") (eq .Kind "taxonomyTerm") -}}
-		{{- if eq .Site.Language.Lang "fa" -}}
-			{{- if eq .Section "posts" -}}
-				{{- $pageTitle = "نوشته‌ها" -}}
-			{{- else if in .Permalink "/tags" -}}
-				{{- $pageTitle = "برچسب‌ها" -}}
-			{{- else -}}
-				{{- $pageTitle = .Title -}}
-			{{- end -}}
-		{{- else if eq .Site.Language.Lang "fr" -}}
-			{{- if eq .Section "posts" -}}
-				{{- $pageTitle = "Articles" -}}
-			{{- else if in .Permalink "/tags" -}}
-				{{- $pageTitle = "Étiquettes" -}}
-			{{- else -}}
-				{{- $pageTitle = .Title -}}
-			{{- end -}}
-		{{- else if eq .Site.Language.Lang "ja" -}}
-			{{- if eq .Section "posts" -}}
-				{{- $pageTitle = "投稿" -}}
-			{{- else if in .Permalink "/tags" -}}
-				{{- $pageTitle = "タグ" -}}
-			{{- else -}}
-				{{- $pageTitle = .Title -}}
-			{{- end -}}
-		{{- else -}}
-			{{- $pageTitle = .Title -}}
-		{{- end -}}
-	{{- else -}}
-		{{- $pageTitle = .Title -}}
-	{{- end -}}
-{{- end -}}
-<title>{{ $pageTitle }} | {{ $siteTitle }}</title>
+<title>{{ if not .IsHome }}{{ $pageTitle }} | {{ end }}{{ $siteTitle }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ i18n "intro" }}{{ end }}">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<script>(function(){var t='light';try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')t=s}catch(e){}document.documentElement.dataset.theme=t})();</script>
 {{ partialCached "head/css.html" . }}
 {{ partialCached "head/js.html" . }}

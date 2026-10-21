@@ -1,28 +1,13 @@
-{{- /* Reusable language switcher partial. Expects context to be a Page (or list) */ -}}
-<div class="page-lang-switch">
-  {{- $page := . -}}
-  {{- range .Site.Languages }}
-    {{- $lang := .Lang -}}
-    {{- $label := .LanguageName | default $lang -}}
-    {{- if eq $lang $.Site.Language.Lang }}
-      <span class="lang-current">{{ $label }}</span>
-    {{- else }}
-      {{- /* default target: language home (try to resolve via site.GetPage) */ -}}
-      {{- $homePath := (printf "/%s/" $lang) -}}
-      {{- $homePage := site.GetPage $homePath -}}
-      {{- $target := $homePath | relURL -}}
-      {{- if $homePage }}
-        {{- $target = $homePage.RelPermalink -}}
-      {{- end }}
-      {{- /* if a translation exists for the current page, prefer linking to that translation */ -}}
-      {{- with $page }}
-        {{- $matches := where .Translations "Lang" $lang -}}
-        {{- if gt (len $matches) 0 }}
-          {{- $trans := index $matches 0 -}}
-          {{- $target = $trans.RelPermalink -}}
-        {{- end }}
-      {{- end }}
-      <a class="lang-link" href="{{ $target }}">{{ $label }}</a>
-    {{- end }}
-  {{- end }}
-</div>
+<nav class="page-lang-switch" aria-label="{{ i18n "languages" }}">
+{{ $page := . }}
+{{ range .Site.Sites }}
+  {{ $target := .Home.RelPermalink }}
+  {{ $lang := .Language.Lang }}
+  {{ range where $page.Translations "Lang" $lang }}{{ $target = .RelPermalink }}{{ end }}
+  {{ if eq $lang $page.Lang }}
+    <span class="lang-current" lang="{{ $lang }}" aria-current="true">{{ .Language.LanguageName }}</span>
+  {{ else }}
+    <a class="lang-link" href="{{ $target }}" lang="{{ $lang }}" hreflang="{{ $lang }}">{{ .Language.LanguageName }}</a>
+  {{ end }}
+{{ end }}
+</nav>
