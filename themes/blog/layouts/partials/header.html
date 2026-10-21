@@ -8,6 +8,5 @@
     <a href="{{ .Site.Home.RelPermalink }}"{{ if $home }} aria-current="page"{{ end }}>{{ i18n "home" }}</a>
     {{ with .Site.GetPage "/posts" }}<a href="{{ .RelPermalink }}"{{ if eq $.Section "posts" }} aria-current="{{ if $.IsPage }}location{{ else }}page{{ end }}"{{ end }}>{{ i18n "posts" }}</a>{{ end }}
     {{ with .Site.GetPage "/tags" }}<a href="{{ .RelPermalink }}"{{ if eq $.Section "tags" }} aria-current="page"{{ end }}>{{ i18n "tags" }}</a>{{ end }}
-    <a href="https://azelys.github.io/publications/" lang="en">Publications</a>
   </nav>
 </header>
