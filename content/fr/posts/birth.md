@@ -1,6 +1,7 @@
 +++
 title = "Naissance"
-date = 2023-12-31T13:27:53-08:00
+date = 2023-12-31T12:27:53-08:00
+translationKey = "birth"
 +++
 
-Traduction française (placeholder) de l'article "birth".
+Une nouvelle identité prend forme, grâce à [Hugo](https://gohugo.io) et à [GitHub](https://github.com).
